@@ -15,7 +15,7 @@ Template.link_item.time_since_submit = function ()
 	return new moment(this.timestamp).fromNow();
 }
 
-Template.links.events = 
+Template.top_bar.events = 
 {
 	'click #show-create-link': function (evt)
 	{

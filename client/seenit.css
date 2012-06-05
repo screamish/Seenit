@@ -31,7 +31,7 @@ input {
 	cursor: pointer;
 }
 
-#main-pane, #side-pane, #bottom-pane {
+#top-bar, #main-pane, #side-pane, #bottom-pane {
     position: absolute;
     left: 0;
     right: 0;
@@ -40,8 +40,12 @@ input {
     overflow: hidden;
 }
 
+#top-bar {
+	left: 20px;
+}
+
 #main-pane {
-    top: 45px;
+    top: 75px;
     bottom: 0;
     left: 20px;
     overflow: auto;
@@ -62,9 +66,24 @@ input {
 
 #create-link div {
 	position: flow;
+	padding: 5px;
+}
+
+#create-link input {
+	width: 20em;
 }
 
 #create-link-button {
+}
+
+#cancel-create-link-button {
+	float: right;
+}
+
+.button-list div{
+	margin-top: 5px;
+	float: left;
+	padding: 3px;
 }
 
 #side-pane {
@@ -78,7 +97,7 @@ input {
 
 #links .link {
 	display: block;
-	height: 70px;
+	height: 65px;
 	position: relative;
 	overflow: hidden;
 	border-top: 1px solid #ccc;
@@ -87,7 +106,7 @@ input {
 
 #links .link .score-panel {
 	position: absolute;
-	line-height: 1.1;
+	line-height: 1.3;
 }
 
 #links .link .score-panel div {

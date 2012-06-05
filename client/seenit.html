@@ -3,15 +3,25 @@
 </head>
 
 <body>
+	<div id="top-bar">
+		{{> top_bar}}
+	</div>
+	
 	<div id="main-pane">
 		{{> links}}
 	</div>
+	
 	{{> create_link}}
 </body>
 
+<template name="top_bar">
+	<div>
+		<h2>Oh yeah, I seenit!</h2>
+	</div>
+	<div id="show-create-link" class="button orange">Add a link</div>
+</template>
+
 <template name="links">
-	<h2>Oh yeah, I seenit!</h2>
-	<div id="show-create-link" class="button">Add a link</div>
 	<div id="links">
 		{{#each links}}
 			{{> link_item}}
@@ -22,9 +32,9 @@
 <template name="link_item">
 	<div class="link">
 		<div class="score-panel">
-			<div class="upvote button">⬆</div>
+			<div class="upvote">⬆</div>
 			<div class="score">{{score}}</div>
-			<div class="downvote button">⬇</div>
+			<div class="downvote">⬇</div>
 		</div>
 		<div class="display">
 			<a href={{url}}>{{title}}</a> <span class="url-hint">({{url}})</span>
@@ -35,10 +45,18 @@
 
 <template name="create_link">
 	<div id="create-link">
-		<h3>Add your link</h3>
-		<input type="text" id="new-link-title" placeholder="New link title"/>
-		<input type="text" id="new-link-url" placeholder="New link url"/>
-		<div id="create-link-button" class="button">Save</div>
-		<div id="cancel-create-link-button" class="button">Cancel</div>
+		<h3>Add a new link</h3>
+		<div>
+			<label for="new-link-title">Title: </label>
+			<input type="text" id="new-link-title" placeholder="My awesome link"/>
+		</div>
+		<div>
+			<label for="new-link-url">Url: </label>
+			<input type="text" id="new-link-url" placeholder="http://www.reddit.com"/>
+		</div>
+		<div class="button-list">
+			<a href="#" id="create-link-button" class="button orange">Save</a>
+			<a href="#" id="cancel-create-link-button" class="button orange medium">Cancel</a>
+		</div>
 	</div>
 </template>
