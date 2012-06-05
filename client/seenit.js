@@ -44,17 +44,21 @@ Template.create_link.events =
 	{
 		console.log("Creating a new link");
 		
-		var linkTitle = $('#new-link-title').val();
-		var linkUrl = $('#new-link-url').val();
+		var linkTitle = $('#new-link-title');
+		var linkUrl = $('#new-link-url');
 		
-		Meteor.call('create_link', linkTitle, linkUrl, function (error, result)
+		Meteor.call('create_link', linkTitle.val(), linkUrl.val(), function (error, result)
 			{
+				$('#new-link-title').val("");
+				$('#new-link-url').val("");
 				$('#create-link').hide();
 			});
 	},
 	
 	'click #cancel-create-link-button': function (evt)
 	{
-			$('#create-link').hide();
+		$('#new-link-title').val("");
+		$('#new-link-url').val("");
+		$('#create-link').hide();
 	}
 }
