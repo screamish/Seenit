@@ -15,6 +15,11 @@ Template.link_item.time_since_submit = function ()
 	return new moment(this.timestamp).fromNow();
 }
 
+Template.link_item.host = function ()
+{
+	return new Uri(this.url).host();
+}
+
 Template.top_bar.events = 
 {
 	'click #show-create-link': function (evt)
@@ -35,6 +40,18 @@ Template.link_item.events =
 	{
 		console.log("Downvote!");
 		Links.update(this._id, {$inc: {downvotes: 1, score: -1}});
+	},
+	
+	'click .delete': function (evt)
+	{
+		console.log("Delete");
+		Meteor.call("delete_link", this._id);
+	},
+	
+	'click .link-details': function (evt)
+	{
+		console.log("Mouseover a link");
+		$('.delete', evt.currentTarget).toggle();
 	}
 }
 

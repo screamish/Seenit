@@ -17,8 +17,8 @@
 <template name="top_bar">
 	<div>
 		<h2>Oh yeah, I seenit!</h2>
+		<div id="show-create-link" class="button orange">Add a link</div>
 	</div>
-	<div id="show-create-link" class="button orange">Add a link</div>
 </template>
 
 <template name="links">
@@ -32,13 +32,16 @@
 <template name="link_item">
 	<div class="link">
 		<div class="score-panel">
-			<div class="upvote">⬆</div>
+			<div class="upvote arrow">⬆</div>
 			<div class="score">{{score}}</div>
-			<div class="downvote">⬇</div>
+			<div class="downvote arrow">⬇</div>
 		</div>
 		<div class="display">
-			<a href={{url}}>{{title}}</a> <span class="url-hint">({{url}})</span>
-			<p class="submitted">submitted {{time_since_submit}}</p>
+			<a href={{url}}>{{title}}</a> <span class="url-hint">({{host}})</span>
+			<div class="link-details">
+				<span class="submitted">submitted {{time_since_submit}}</span>
+				<a href="#" class="delete button orange small">Delete</a>
+			</div>
 		</div>
 	</div>
 </template>

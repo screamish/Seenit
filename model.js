@@ -1,12 +1,17 @@
+
 Meteor.methods({
 	create_link: function (title, url)
 	{
-		if (!$.trim(title) || !$.trim(url))
+		if (!_.str.trim(title) || !_.str.trim(url))
 			throw new Meteor.Error(400, "Links must have a title and a URL");
 		
+		var uri = new Uri(url);
+		if(!uri.protocol())
+			uri.protocol('http');
+		
 		var link_id = Links.insert(
-			{	title: $.trim(title),
-				url: $.trim(url),
+			{	title: _.str.trim(title),
+				url: uri.toString(),
 				timestamp: new Date().getTime(),
 				upvotes: 0,
 				downvotes: 0,
@@ -14,5 +19,13 @@ Meteor.methods({
 			});
 			
 		return link_id;
+	},
+	
+	delete_link: function (link_id)
+	{
+		if (!Links.findOne(link_id))
+			throw new Meteor.Error(400, "Unknown link, unable to delete");
+			
+		Links.remove(link_id);
 	}
 });

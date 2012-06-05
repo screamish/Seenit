@@ -86,6 +86,10 @@ input {
 	padding: 3px;
 }
 
+.delete {
+	display: none;
+}
+
 #side-pane {
     width: 200px;
     right: auto;
@@ -114,7 +118,8 @@ input {
 	margin-right: auto;
 }
 
-#links .link .upvote {
+.arrow {
+	cursor: pointer;
 }
 
 #links .link .score {
