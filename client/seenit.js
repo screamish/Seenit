@@ -7,7 +7,7 @@ Meteor.subscribe('links', function()
 
 Template.links.links = function ()
 {
-	return Links.find({}, {sort: {timestamp: 1}});
+	return Links.find({}, {sort: {score: -1, timestamp: 1}});
 }
 
 Template.link_item.time_since_submit = function ()
@@ -15,23 +15,18 @@ Template.link_item.time_since_submit = function ()
 	return new moment(this.timestamp).fromNow();
 }
 
-Template.link_item.score = function ()
-{
-	return (this.upvotes - this.downvotes);
-}
-
 Template.link_item.events = 
 {
 	'click .upvote': function (evt)
 	{
 		console.log("Upvote!");
-		Links.update(this._id, {$inc: {upvotes: 1}});
+		Links.update(this._id, {$inc: {upvotes: 1, score: 1}});
 	},
 	
 	'click .downvote': function (evt)
 	{
 		console.log("Downvote!");
-		Links.update(this._id, {$inc: {downvotes: 1}});
+		Links.update(this._id, {$inc: {downvotes: 1, score: -1}});
 	}
 }
 
