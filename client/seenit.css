@@ -1,1 +1,99 @@
 /* CSS declarations go here */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-size: 16px;
+    line-height: 1.5;
+    background: #eeeeee;
+    color: #333333;
+}
+
+body, input {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+input {
+    font-size: 100%;
+}
+
+#main-pane, #side-pane, #bottom-pane {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+#main-pane {
+    top: 45px;
+    bottom: 0;
+    left: 220px;
+    overflow: auto;
+}
+
+#side-pane {
+    width: 200px;
+    right: auto;
+    overflow: auto;
+    background: #eee;
+    border-right: 1px solid #999;
+    background: #ddd;
+}
+
+#links .link {
+	display: block;
+	height: 70px;
+	position: relative;
+	overflow: hidden;
+	border-top: 1px solid #ccc;
+	padding: 2px;
+}
+
+#links .link .score-panel {
+	position: absolute;
+	line-height: 1.1;
+}
+
+#links .link .score-panel div {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#links .link .upvote {
+	cursor: pointer;
+}
+
+#links .link .score {
+	text-align: center;
+}
+
+#links .link .downvote {
+	cursor: pointer;
+}
+
+#links .link .display {
+	margin-left: 30px;
+	position: absolute;
+  height: 100%;
+  width: auto;
+}
+
+#links .link .submitted {
+	font-size: 60%;
+}
+
+#links .link .url-hint {
+	font-size: 70%;
+}

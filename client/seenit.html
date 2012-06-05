@@ -12,11 +12,22 @@
 	<h2>Juicy juicy links</h2>
 	<div id="links">
 		{{#each links}}
-			<div class="link">
-				<a class="upvote" href='#'>+</a> <span name="score">{{score}}</span> <a class="downvote" href="#">-</a>
-				<a href={{url}}>{{title}}</a> <span class="url-hint">{{url}}</span>
-			</div>
+			{{> link_item}}
 		{{/each}}
+	</div>
+</template>
+
+<template name="link_item">
+	<div class="link">
+		<div class="score-panel">
+			<div class="upvote">⬆</div>
+			<div class="score">{{score}}</div>
+			<div class="downvote">⬇</div>
+		</div>
+		<div class="display">
+			<a href={{url}}>{{title}}</a> <span class="url-hint">({{url}})</span>
+			<p class="submitted">submitted {{time_since_submit}}</p>
+		</div>
 	</div>
 </template>
 

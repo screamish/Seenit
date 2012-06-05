@@ -20,7 +20,6 @@ Meteor.startup(function () {
 					timestamp: timestamp,
 					upvotes: 0,
 					downvotes: 0,
-					score: 0
 				});
 			
 			timestamp += 1;

@@ -9,13 +9,29 @@ Template.links.links = function ()
 {
 	return Links.find({}, {sort: {timestamp: 1}});
 }
-	
-Template.links.events = 
+
+Template.link_item.time_since_submit = function ()
 {
-	'click #upvote': function (evt)
+	return new moment(this.timestamp).fromNow();
+}
+
+Template.link_item.score = function ()
+{
+	return (this.upvotes - this.downvotes);
+}
+
+Template.link_item.events = 
+{
+	'click .upvote': function (evt)
 	{
 		console.log("Upvote!");
-		Links.update(this._id, {$set: {upvotes: this.upvotes++}});
+		Links.update(this._id, {$inc: {upvotes: 1}});
+	},
+	
+	'click .downvote': function (evt)
+	{
+		console.log("Downvote!");
+		Links.update(this._id, {$inc: {downvotes: 1}});
 	}
 }
 
