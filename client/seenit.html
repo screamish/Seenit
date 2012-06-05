@@ -1,10 +1,23 @@
 <head>
-  <title>seenit</title>
+  <title>Seenit!</title>
 </head>
 
 <body>
-  {{> hello}}
+	<div id="main-pane">
+		{{> links}}
+	</div>
 </body>
+
+<template name="links">
+	<h2>Juicy juicy links</h2>
+	<div id="links">
+		{{#each links}}
+			<div class="link">
+				<a href={{url}}>{{title}}</a>
+			</div>
+		{{/each}}
+	</div>
+</template>
 
 <template name="hello">
   <h1>Hello World!</h1>

@@ -1,3 +1,17 @@
+Links = new Meteor.Collection("links");
+
+Meteor.subscribe('links', function()
+	{
+		
+	});
+
+Template.links.links = function ()
+	{
+		return Links.find({}, {sort: {timestamp: 1}});
+	}
+
+// Default crap below
+
 Template.hello.greeting = function () {
   return "Welcome to seenit.";
 };

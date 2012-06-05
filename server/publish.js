@@ -1,3 +1,7 @@
-Meteor.startup(function () {
-  // code to run on server at startup
+
+Links = new Meteor.Collection("links");
+
+Meteor.publish('links', function(){
+	return Links.find();
 });
+
