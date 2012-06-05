@@ -6,9 +6,18 @@ Meteor.subscribe('links', function()
 	});
 
 Template.links.links = function ()
+{
+	return Links.find({}, {sort: {timestamp: 1}});
+}
+	
+Template.links.events = 
+{
+	'click #upvote': function (evt)
 	{
-		return Links.find({}, {sort: {timestamp: 1}});
+		console.log("Upvote!");
+		Links.update(this._id, {$set: {upvotes: this.upvotes++}});
 	}
+}
 
 // Default crap below
 

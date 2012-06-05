@@ -17,7 +17,10 @@ Meteor.startup(function () {
 			var link_id = Links.insert(
 				{	title: data[i].title,
 					url: data[i].url,
-					timestamp: timestamp
+					timestamp: timestamp,
+					upvotes: 0,
+					downvotes: 0,
+					score: 0
 				});
 			
 			timestamp += 1;
