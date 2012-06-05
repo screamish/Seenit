@@ -11,22 +11,7 @@ Meteor.startup(function () {
 			}
 		];
 		
-		var timestamp = (new Date()).getTime();
-		for (var i = 0; i < data.length; i++)
-		{
-			var link_id = Links.insert(
-				{	title: data[i].title,
-					url: data[i].url,
-					timestamp: timestamp,
-					upvotes: 0,
-					downvotes: 0,
-					score: 0
-				});
-			
-			timestamp += 1;
-		}
-		
+		_.each(data, function(link){ Meteor.call("create_link", link.title, link.url); });	
 	}
-	
 	
 });
