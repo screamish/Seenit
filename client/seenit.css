@@ -27,6 +27,10 @@ input {
     font-size: 100%;
 }
 
+.button {
+	cursor: pointer;
+}
+
 #main-pane, #side-pane, #bottom-pane {
     position: absolute;
     left: 0;
@@ -39,8 +43,28 @@ input {
 #main-pane {
     top: 45px;
     bottom: 0;
-    left: 220px;
+    left: 20px;
     overflow: auto;
+}
+
+#create-link {
+	display: none;
+	position: absolute;
+	top: 30%;
+	left: 35%;
+	border: 1px dashed #999;
+	padding: 15px;
+	background: #FFF;
+}
+
+#show-create-link {
+}
+
+#create-link div {
+	position: flow;
+}
+
+#create-link-button {
 }
 
 #side-pane {
@@ -72,7 +96,6 @@ input {
 }
 
 #links .link .upvote {
-	cursor: pointer;
 }
 
 #links .link .score {
@@ -80,7 +103,6 @@ input {
 }
 
 #links .link .downvote {
-	cursor: pointer;
 }
 
 #links .link .display {

@@ -15,6 +15,14 @@ Template.link_item.time_since_submit = function ()
 	return new moment(this.timestamp).fromNow();
 }
 
+Template.links.events = 
+{
+	'click #show-create-link': function (evt)
+	{
+		$('#create-link').show();
+	}
+}
+
 Template.link_item.events = 
 {
 	'click .upvote': function (evt)
@@ -30,16 +38,23 @@ Template.link_item.events =
 	}
 }
 
-// Default crap below
-
-Template.hello.greeting = function () {
-  return "Welcome to seenit.";
-};
-
-Template.hello.events = {
-  'click input' : function () {
-    // template data, if any, is available in 'this'
-    if (typeof console !== 'undefined')
-      console.log("You pressed the button");
-  }
-};
+Template.create_link.events =
+{
+	'click #create-link-button': function (evt)
+	{
+		console.log("Creating a new link");
+		
+		var linkTitle = $('#new-link-title').val();
+		var linkUrl = $('#new-link-url').val();
+		
+		Meteor.call('create_link', linkTitle, linkUrl, function (error, result)
+			{
+				$('#create-link').hide();
+			});
+	},
+	
+	'click #cancel-create-link-button': function (evt)
+	{
+			$('#create-link').hide();
+	}
+}

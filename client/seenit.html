@@ -6,10 +6,12 @@
 	<div id="main-pane">
 		{{> links}}
 	</div>
+	{{> create_link}}
 </body>
 
 <template name="links">
-	<h2>Juicy juicy links</h2>
+	<h2>Oh yeah, I seenit!</h2>
+	<div id="show-create-link" class="button">Add a link</div>
 	<div id="links">
 		{{#each links}}
 			{{> link_item}}
@@ -20,9 +22,9 @@
 <template name="link_item">
 	<div class="link">
 		<div class="score-panel">
-			<div class="upvote">⬆</div>
+			<div class="upvote button">⬆</div>
 			<div class="score">{{score}}</div>
-			<div class="downvote">⬇</div>
+			<div class="downvote button">⬇</div>
 		</div>
 		<div class="display">
 			<a href={{url}}>{{title}}</a> <span class="url-hint">({{url}})</span>
@@ -31,8 +33,12 @@
 	</div>
 </template>
 
-<template name="hello">
-  <h1>Hello World!</h1>
-  {{greeting}}
-  <input type="button" value="Click" />
+<template name="create_link">
+	<div id="create-link">
+		<h3>Add your link</h3>
+		<input type="text" id="new-link-title" placeholder="New link title"/>
+		<input type="text" id="new-link-url" placeholder="New link url"/>
+		<div id="create-link-button" class="button">Save</div>
+		<div id="cancel-create-link-button" class="button">Cancel</div>
+	</div>
 </template>
