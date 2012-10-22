@@ -1,13 +1,37 @@
 Links = new Meteor.Collection("links");
+Comments = new Meteor.Collection("comments");
 
 Meteor.subscribe('links', function()
+{
+	
+});
+
+Meteor.autosubscribe(function ()
+{
+	var link_id = Session.get('link_id');
+	if(link_id)
 	{
-		
-	});
+		Meteor.subscribe('comments', link_id);
+		Meteor.subscribe('link', link_id);
+	}
+});
+
+Template.main_pane.commenting = function ()
+{
+	if(Session.get('link_id'))
+		return true;
+	
+	return false;
+}
 
 Template.links.links = function ()
 {
 	return Links.find({}, {sort: {score: -1, timestamp: 1}});
+}
+
+Template.link_item.comment_count = function ()
+{
+	return Comments.find({link_id: this._id}).count();
 }
 
 Template.link_item.time_since_submit = function ()
@@ -52,6 +76,11 @@ Template.link_item.events =
 	{
 		console.log("Mouseover a link");
 		$('.delete', evt.currentTarget).toggle();
+	},
+	
+	'click .comments-summary': function (evt)
+	{
+		Session.set("link_id", this._id);
 	}
 }
 

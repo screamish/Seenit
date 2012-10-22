@@ -27,5 +27,22 @@ Meteor.methods({
 			throw new Meteor.Error(400, "Unknown link, unable to delete");
 			
 		Links.remove(link_id);
+	},
+	
+	add_comment: function (link_id, comment)
+	{
+		var link = Links.findOne(link_id);
+		if (!link)
+			throw new Meteor.Error(400, "Unknown link, unable to add comment");
+			
+		Comments.insert(
+			{
+				text: comment,
+				link_id: link_id,
+				timestamp: (new Date()).getTime(),
+				upvotes: 0,
+				downvotes: 0,
+				score: 0
+			});
 	}
 });

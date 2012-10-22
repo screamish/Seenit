@@ -7,9 +7,7 @@
 		{{> top_bar}}
 	</div>
 	
-	<div id="main-pane">
-		{{> links}}
-	</div>
+	{{> main_pane}}
 	
 	{{> create_link}}
 </body>
@@ -18,6 +16,25 @@
 	<div>
 		<h2>Oh yeah, I seenit!</h2>
 		<div id="show-create-link" class="button orange">Add a link</div>
+	</div>
+</template>
+
+<template name="main_pane">
+	<div id="main-pane">
+	{{#if commenting}}
+		{{> link_item}}
+	{{else}}
+		{{> links}}
+	{{/if}}
+	</div>
+</template>
+
+<template name="link_detail">
+	{{> link_item}}
+	<div id="comments">
+		{{#each comments}}
+			{{> comment_item}}
+		{{/each}}
 	</div>
 </template>
 
@@ -39,6 +56,7 @@
 		<div class="display">
 			<a href={{url}}>{{title}}</a> <span class="url-hint">({{host}})</span>
 			<div class="link-details">
+				<a href="#" class="comments-summary">{{comment_count}} comments</a>
 				<span class="submitted">submitted {{time_since_submit}}</span>
 				<a href="#" class="delete button orange small">Delete</a>
 			</div>
